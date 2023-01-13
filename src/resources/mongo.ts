@@ -1,20 +1,18 @@
 /* eslint-disable max-len */
 import { connect, connection } from 'mongoose';
-import config from 'config';
-import logger from 'logger';
+import config from '../config';
+import logger from '../logger';
 
 const mongoDBConfig = config.mongodb;
 
 const mongodbProtocol = mongoDBConfig.protocol || 'mongodb';
-const userNamePwd = mongoDBConfig.username ? `${mongoDBConfig.username}:${mongoDBConfig.pasword}@` : '';
+const userNamePwd = mongoDBConfig.username ? `${mongoDBConfig.username}:${mongoDBConfig.password}@` : '';
 
-let mongodbUrl = `${mongodbProtocol}://${userNamePwd}${mongoDBConfig.host}/${mongoDBConfig.dbName}?${
-  userNamePwd ? 'authSource=admin' : ''
-}retryWrites=true`;
+let mongodbUrl = `${mongodbProtocol}://${userNamePwd}${mongoDBConfig.host}/${mongoDBConfig.dbName}?retryWrites=true&w=majority`;
 
-if (mongoDBConfig.replicaSet) {
-  mongodbUrl += `&replicaSet=${mongoDBConfig.replicaSet}`;
-}
+// if (mongoDBConfig.replicaSet) {
+//   mongodbUrl += `&replicaSet=${mongoDBConfig.replicaSet}`;
+// }
 
 const options = {
   autoIndex: true,

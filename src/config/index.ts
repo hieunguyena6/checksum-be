@@ -11,6 +11,7 @@ if (fs.existsSync(pathEnv)) {
     sample: path.join(__dirname, '../../.env.example'),
   });
 }
+
 export default {
   env: process.env.NODE_ENV,
   port: process.env.PORT,
@@ -25,7 +26,7 @@ export default {
   mongodb: {
     protocol: process.env.MONGODB_PROTOCOL,
     username: process.env.MONGODB_USERNAME,
-    pasword: process.env.MONGODB_PASSWORD,
+    password: process.env.MONGODB_PASSWORD,
     host: process.env.MONGODB_HOST,
     replicaSet: process.env.MONGODB_REPLICA_SET,
     dbName: process.env.MONGODB_NAME,
