@@ -4,8 +4,8 @@ import jwt from 'jsonwebtoken';
 import RequestWithUser from '../../../utils/rest/request';
 import fmt from '../../../utils/formatter';
 import * as service from './service';
-import { UserNotAuthorizedException } from 'exceptions';
-import UserNotFoundException from 'exceptions/UserNotFoundException';
+import { UserNotAuthorizedException } from '../../../exceptions';
+import UserNotFoundException from '../../../exceptions/UserNotFoundException';
 
 const login = async (request: RequestWithUser, response: Response, next: NextFunction) => {
   const user = await service.getUserByUsername(request.body.userName);
