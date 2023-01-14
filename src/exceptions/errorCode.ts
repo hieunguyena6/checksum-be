@@ -10,7 +10,7 @@ export const ERROR_CODES = {
 export const ErrorCodes: { [key: string]: CustomError } = {
   UNAUTHORIZED: {
     CODE: 'UNAUTHORIZED',
-    MESSAGE: 'User not found or not allowed to perform this operation',
+    MESSAGE: 'Login failed! Please try again',
   },
   VALIDATION_ERROR: {
     CODE: 'VALIDATION_ERROR',

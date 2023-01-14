@@ -5,9 +5,9 @@ const createUser = async (user: any) => {
   return data;
 };
 
-const getUserByUsername = (username: string) => {
+const getUserByUsername = (userName: string) => {
   return UserModel.findOne({
-    username
+    userName
   });
 };
 

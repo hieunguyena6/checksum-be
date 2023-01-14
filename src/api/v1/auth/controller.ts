@@ -13,15 +13,15 @@ const login = async (request: RequestWithUser, response: Response, next: NextFun
     throw new UserNotFoundException();
   }
   const match = await bcrypt.compare(request.body.password, user.password);
-  console.log(match, user.password, request.body.password)
   if (!match) {
     throw new UserNotAuthorizedException();
   }
   const token = await jwt.sign({
     data: {
-      userName: user.userName
+      id: user.id,
+      userName: user.userName,
     }
-  }, process.env.JWT_KEY, { expiresIn: 60 * 60 });
+  }, process.env.JWT_KEY, { expiresIn: 60 * 60 * 365 });
 
   response.status(200);
   response.send(fmt.formatResponse({
@@ -30,7 +30,7 @@ const login = async (request: RequestWithUser, response: Response, next: NextFun
 };
 
 const registerUser = async (request: RequestWithUser, response: Response, next: NextFunction) => {
-  const hash = bcrypt.hashSync(request.body.password, bcrypt.genSaltSync(10));
+  const hash = bcrypt.hashSync(request.body.password, 10);
 
   const users = await service.createUser({
     userName: request.body.userName,
