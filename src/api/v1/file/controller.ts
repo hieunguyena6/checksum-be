@@ -3,7 +3,7 @@ import RequestWithUser from '../../../utils/rest/request';
 import fmt from '../../../utils/formatter';
 import * as service from './service';
 import { CreateFileChecksumDto } from './dtos';
-import { HttpException } from 'exceptions';
+import { HttpException } from '../../../exceptions';
 
 const createFileChecksum = async (request: RequestWithUser, response: Response, next: NextFunction) => {
   const data = request.body as CreateFileChecksumDto;
